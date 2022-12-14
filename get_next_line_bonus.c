@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 10:18:46 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/12/14 11:02:07 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/12/14 11:19:47 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*delete(char *str)
 {
@@ -89,28 +89,28 @@ char	*get_next_line(int fd)
 {
 	char		*buff;
 	char		*new_str;
-	static char	*str;
+	static char	*str[1024];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 	{
-		if (str != NULL)
+		if (str[fd] != NULL)
 		{
-			free(str);
-			str = NULL;
+			free(str[fd]);
+			str[fd] = NULL;
 		}
 		return (NULL);
 	}
 	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(*buff));
 	if (!buff)
 		return (NULL);
-	str = process_str(fd, buff, str);
-	if (!str)
+	str[fd] = process_str(fd, buff, str[fd]);
+	if (!str[fd])
 	{
-		free(str);
+		free(str[fd]);
 		return (NULL);
 	}
-	new_str = process_line(str);
-	str = delete(str);
+	new_str = process_line(str[fd]);
+	str[fd] = delete(str[fd]);
 	return (new_str);
 }
 
