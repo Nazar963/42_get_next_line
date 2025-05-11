@@ -18,12 +18,18 @@ jobs:
           version: latest
           platform: x64
       
-      # Uncomment the main function if it's commented
+      # Uncomment the main function in both files if they're commented
       - name: Uncomment main function
         run: |
+          # Uncomment main in standard version
           sed -i 's/\/\*int\s*main/int main/g' get_next_line.c
           sed -i 's/\}\s*\*\//}/g' get_next_line.c
           cat get_next_line.c  # Display modified file for verification
+          
+          # Uncomment main in bonus version
+          sed -i 's/int\s*main(\/\*\s*void)/int main(void)/g' get_next_line_bonus.c
+          sed -i 's/return\s*(0);\s*\}\s*\*\//return (0);}/g' get_next_line_bonus.c
+          cat get_next_line_bonus.c  # Display modified file for verification
       
       # Create test file
       - name: Create test file
@@ -47,16 +53,33 @@ jobs:
           ls -la get_next_line
           ls -la get_next_line_bonus
       
-      # Run the program and check output
-      - name: Run get_next_line
+      # Run the standard program and check output
+      - name: Run get_next_line (standard version)
         run: |
           ./get_next_line > output.txt
           cat output.txt
           
-      # Optional: Verify expected output
-      - name: Verify output
+      # Optional: Verify standard output
+      - name: Verify standard output
         run: |
           expected="This is line 1
           This is line 2
           This is line 3"
-          diff -u <(echo "$expected") output.txt && echo "Output verified successfully!"
+          diff -u <(echo "$expected") output.txt && echo "Standard version output verified successfully!"
+          
+      # Run the bonus program and check output
+      - name: Run get_next_line_bonus
+        run: |
+          ./get_next_line_bonus > output_bonus.txt
+          cat output_bonus.txt
+          
+      # Check bonus version output
+      - name: Verify bonus functionality
+        run: |
+          if [ -s output_bonus.txt ]; then
+            echo "Bonus version executed successfully!"
+            cat output_bonus.txt
+          else
+            echo "Error: Bonus version output is empty or failed."
+            exit 1
+          fi
