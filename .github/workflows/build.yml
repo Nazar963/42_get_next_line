@@ -1,4 +1,4 @@
-name: Build Project
+name: Build and Test Project
 on:
   push:
     branches: [ "main" ]
@@ -18,13 +18,45 @@ jobs:
           version: latest
           platform: x64
       
+      # Uncomment the main function if it's commented
+      - name: Uncomment main function
+        run: |
+          sed -i 's/\/\*int\s*main/int main/g' get_next_line.c
+          sed -i 's/return\s*(0);\s*\*\//return (0);/g' get_next_line.c
+          cat get_next_line.c  # Display modified file for verification
+      
+      # Create test file
+      - name: Create test file
+        run: |
+          echo "This is line 1" > read_error.txt
+          echo "This is line 2" >> read_error.txt
+          echo "This is line 3" >> read_error.txt
+          cat read_error.txt  # Display created file
+      
+      # Build standard version with main function included
       - name: Build standard version
         run: gcc -Wall -Wextra -Werror get_next_line.c get_next_line_utils.c -o get_next_line
       
+      # Build bonus version
       - name: Build bonus version
         run: gcc -Wall -Wextra -Werror get_next_line_bonus.c get_next_line_utils_bonus.c -o get_next_line_bonus
       
+      # Verify binaries
       - name: Verify binaries
         run: |
           ls -la get_next_line
           ls -la get_next_line_bonus
+      
+      # Run the program and check output
+      - name: Run get_next_line
+        run: |
+          ./get_next_line > output.txt
+          cat output.txt
+          
+      # Optional: Verify expected output
+      - name: Verify output
+        run: |
+          expected="This is line 1
+          This is line 2
+          This is line 3"
+          diff -u <(echo "$expected") output.txt && echo "Output verified successfully!"
