@@ -1,0 +1,30 @@
+name: Build Project
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up GCC
+        uses: egor-tensin/setup-gcc@v1
+        with:
+          version: latest
+          platform: x64
+      
+      - name: Build standard version
+        run: gcc -Wall -Wextra -Werror get_next_line.c get_next_line_utils.c -o get_next_line
+      
+      - name: Build bonus version
+        run: gcc -Wall -Wextra -Werror get_next_line_bonus.c get_next_line_utils_bonus.c -o get_next_line_bonus
+      
+      - name: Verify binaries
+        run: |
+          ls -la get_next_line
+          ls -la get_next_line_bonus
