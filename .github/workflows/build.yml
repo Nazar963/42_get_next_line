@@ -22,7 +22,7 @@ jobs:
       - name: Uncomment main function
         run: |
           sed -i 's/\/\*int\s*main/int main/g' get_next_line.c
-          sed -i 's/return\s*(0);\s*\*\//return (0);/g' get_next_line.c
+          sed -i 's/\}\s*\*\//}/g' get_next_line.c
           cat get_next_line.c  # Display modified file for verification
       
       # Create test file
