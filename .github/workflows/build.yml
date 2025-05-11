@@ -27,8 +27,8 @@ jobs:
           cat get_next_line.c  # Display modified file for verification
           
           # Uncomment main in bonus version
-          sed -i 's/int\s*main(\/\*\s*void)/int main(void)/g' get_next_line_bonus.c
-          sed -i 's/return\s*(0);\s*\}\s*\*\//return (0);}/g' get_next_line_bonus.c
+          sed -i 's/\/\*int\s*main(\s*void)/int main(void)/g' get_next_line_bonus.c
+          sed -i 's/}\s*\*\//}/g' get_next_line_bonus.c
           cat get_next_line_bonus.c  # Display modified file for verification
       
       # Create test file
