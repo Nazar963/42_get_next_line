@@ -1,4 +1,4 @@
-# get_next_line 📖
+# Get_next_line 📖
 
 [![42 School](https://img.shields.io/badge/42-School-blue)](https://42firenze.it/)
 [![GitHub license](https://img.shields.io/github/license/Nazar963/42_get_next_line)](https://github.com/Nazar963/42_get_next_line/blob/master/LICENSE)
@@ -222,8 +222,14 @@ Validated with:
 - Open source testing frameworks
 - System programming concepts from UNIX documentation
 
+## 🤝 Contributing
+Feel free to submit issues or pull requests if you have suggestions for improving the test suite or adding more test cases.
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📧 Contact
+For questions or feedback, please open an issue in the repository.
 
 ---
 
@@ -232,3 +238,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 [![42 School](https://img.shields.io/badge/42-profile-blue)](https://profile-v3.intra.42.fr/users/naal-jen)
 [![GitHub Profile](https://img.shields.io/badge/GitHub-Nazar963-lightgrey)](https://github.com/Nazar963)
+
+---
+
+Good luck with your Get_next_line project at 42! 🚀
