@@ -223,7 +223,7 @@ Validated with:
 - System programming concepts from UNIX documentation
 
 ## 🤝 Contributing
-Feel free to submit issues or pull requests if you have suggestions for improving the test suite or adding more test cases.
+Feel free to submit issues or pull requests if you have suggestions for improving the application or adding more features.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -231,15 +231,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📧 Contact
 For questions or feedback, please open an issue in the repository.
 
+## ⭐ Star this repository if you found it helpful!
+[![GitHub stars](https://img.shields.io/github/stars/Nazar963/42_get_next_line?style=social)](https://github.com/Nazar963/42_get_next_line/stargazers)
+
 ---
 
-🚀 **Star this repository if you find it useful!**  
-[![GitHub stars](https://img.shields.io/github/stars/Nazar963/42_get_next_line?style=social)](https://github.com/Nazar963/42_get_next_line/stargazers)
+🗿 *"Optimize buffers, not dreams – but sometimes, a well-placed free() is a dream come true."*
 
 [![42 School](https://img.shields.io/badge/42-profile-blue)](https://profile-v3.intra.42.fr/users/naal-jen)
 [![GitHub Profile](https://img.shields.io/badge/GitHub-Nazar963-lightgrey)](https://github.com/Nazar963)
 [![GitHub Follow](https://img.shields.io/github/followers/Nazar963?style=social)](https://github.com/Nazar963)
 
 ---
-
+## 🍀 Goodluck:
 Good luck with your Get_next_line project at 42! 🚀
